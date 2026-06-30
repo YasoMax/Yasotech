@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaso Tech | سيرفر خدمات برمجة الهواتف المتكامل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #070a13;
+        }
+        .glow-effect {
+            transition: all 0.3s ease;
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);
+            transform: translateY(-4px);
+        }
+        .glass-modal {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* مظهر مخصص لشريط التمرير داخل لوحة التحكم */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="text-gray-200 antialiased overflow-x-hidden">
+
+    <!-- الهيدر الرئيسي -->
+    <header class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-900">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="bg-gradient-to-br from-blue-600 to-cyan-500 text-white p-2 rounded-xl font-black text-xl tracking-wider shadow-lg shadow-blue-500/20">YT</div>
+                <span class="text-2xl font-black bg-gradient-to-l from-blue-400 to-cyan-300 bg-clip-text text-transparent">Yaso Tech</span>
+            </div>
+            <nav class="hidden lg:flex space-x-8 space-x-reverse text-sm font-semibold text-gray-400">
+                <a href="#services" class="hover:text-blue-400 transition">الخدمات الفورية</a>
+                <a href="#brands" class="hover:text-blue-400 transition">الأجهزة المدعومة</a>
+                <a href="#features" class="hover:text-blue-400 transition">مميزات السيرفر</a>
+            </nav>
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <button onclick="toggleModal('login-modal')" class="text-sm font-bold text-gray-300 hover:text-blue-400 transition">تسجيل الدخول</button>
+                <button onclick="toggleModal('register-modal')" class="bg-gradient-to-r from-blue-600 to-cyan-500 hover:opacity-90 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-blue-600/20 transition">إنشاء حساب</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- القسم الترحيبي -->
+    <section class="relative overflow-hidden pt-24 pb-36">
+        <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px]"></div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <span class="bg-slate-900 border border-slate-800 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase shadow-inner">السيرفر الأول عالمياً لبرمجة الهواتف</span>
+            <h1 class="text-4xl md:text-6xl font-black text-white mt-6 leading-tight">
+                منصة <span class="bg-gradient-to-l from-blue-400 to-cyan-300 bg-clip-text text-transparent">Yaso Tech</span> الفاخرة <br>لخدمات الـ Software الفورية
+            </h1>
+            <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+                سيرفر متكامل لإزالة حسابات الـ FRP، وتخطي الأيكلود، وإصلاح السيريال وتفعيل الدونجلات الرسمية بلحظات وبأرخص الأسعار المنافسة.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#services" class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-500 hover:opacity-90 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-blue-500/20 transition text-center">تصفح الخدمات الفورية</a>
+                <button onclick="toggleModal('login-modal')" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white font-bold px-8 py-4 rounded-xl transition text-center">أسعار الوكلاء والموزعين</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأجهزة المدعومة -->
+    <section id="brands" class="bg-slate-950/40 py-12 border-y border-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-xs font-bold tracking-widest text-gray-500 uppercase mb-8">ندعم جميع الأنظمة والإصدارات الأمنية الحديثة</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 items-center justify-items-center opacity-70">
+                <span class="text-lg font-bold hover:text-white transition cursor-default"><i class="fab fa-apple text-xl ml-2"></i>iPhone</span>
+                <span class="text-lg font-bold hover:text-white transition cursor-default"><i class="fab fa-android text-xl ml-2 text-green-500"></i>SAMSUNG</span>
+                <span class="text-lg font-bold hover:text-white transition cursor-default">XIAOMI</span>
+                <span class="text-lg font-bold hover:text-white transition cursor-default">HUAWEI</span>
+                <span class="text-lg font-bold hover:text-white transition cursor-default">OPPO</span>
+                <span class="text-lg font-bold hover:text-white transition cursor-default">VIVO</span>
+                <span class="text-lg font-bold hover:text-white transition cursor-default">REALME</span>
+                <span class="text-lg font-bold hover:text-white transition cursor-default">ONEPLUS</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section id="services" class="py-28 container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <h2 class="text-3xl md:text-4xl font-black text-white">خدمات السيرفر الأكثر طلباً</h2>
+            <p class="text-gray-400 mt-4 text-sm md:text-base">عمليات برمجية وتفعيلات فورية عبر السيرفرات الرسمية دون الحاجة لبوكسات ملموسة.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-8 hover:border-blue-500/40 transition glow-effect flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-blue-600/10 text-blue-400 rounded-xl flex items-center justify-center text-xl mb-6 border border-blue-500/10">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">إزالة وتخطي حسابات FRP</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">تخطي حماية جوجل بعد الفورمات لجميع أجهزة سامسونج، شاومي، هواوي بنقرة واحدة وخلال دقيقة.</p>
+                </div>
+                <div class="flex justify-between items-center mt-6 border-t border-slate-800/60 pt-4">
+                    <span class="text-cyan-400 font-bold text-lg">تبدأ من $1.99</span>
+                    <button onclick="toggleModal('login-modal')" class="bg-slate-800 hover:bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition">اطلب الآن</button>
+                </div>
+            </div>
+
+            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-8 hover:border-purple-500/40 transition glow-effect flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-purple-600/10 text-purple-400 rounded-xl flex items-center justify-center text-xl mb-6 border border-purple-500/10">
+                        <i class="fas fa-lock-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">حذف Samsung Account</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">حذف نهائي لحسابات سامسونج من السيرفر الرسمي للمخرجات والنسخ الحديثة والمحمية بأعلى درجات الأمان.</p>
+                </div>
+                <div class="flex justify-between items-center mt-6 border-t border-slate-800/60 pt-4">
+                    <span class="text-cyan-400 font-bold text-lg">تبدأ من $4.50</span>
+                    <button onclick="toggleModal('login-modal')" class="bg-slate-800 hover:bg-purple-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition">اطلب الآن</button>
+                </div>
+            </div>
+
+            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-8 hover:border-cyan-500/40 transition glow-effect flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 bg-cyan-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl mb-6 border border-cyan-500/10">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">فك تشفير الشبكات الدولي</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">تشغيل جميع الشبكات المحلية والدولية للأجهزة المقفلة على شبكات أمريكية أو أوروبية مثل T-Mobile و AT&T.</p>
+                </div>
+                <div class="flex justify-between items-center mt-6 border-t border-slate-800/60 pt-4">
+                    <span class="text-cyan-400 font-bold text-lg">حسب الشبكة</span>
+                    <button onclick="toggleModal('login-modal')" class="bg-slate-800 hover:bg-cyan-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition">اطلب الآن</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المميزات ولوحة التحكم الذكية التفاعلية الحية -->
+    <section id="features" class="bg-slate-950/40 py-24 border-t border-slate-900">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="text-blue-400 font-bold text-sm uppercase tracking-wider">لماذا تختار Yaso Tech؟</span>
+                <h2 class="text-3xl md:text-4xl font-black text-white mt-2 mb-8">سيرفر مخصص ومستقر للمحترفين وأصحاب المحلات</h2>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4 space-x-reverse">
+                        <div class="bg-emerald-500/10 text-emerald-400 p-3 rounded-xl mt-1 border border-emerald-500/10"><i class="fas fa-bolt"></i></div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">تسليم فوري وآلي</h4>
+                            <p class="text-gray-400 text-sm mt-1 leading-relaxed">تتم معالجة طلبات الـ API وحسابات الهواتف تلقائياً 24/7 دون أي تأخير أو تدخل بشري.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 space-x-reverse">
+                        <div class="bg-blue-500/10 text-blue-400 p-3 rounded-xl mt-1 border border-blue-500/10"><i class="fas fa-headset"></i></div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">دعم فني متواصل ومباشر</h4>
+                            <p class="text-gray-400 text-sm mt-1 leading-relaxed">فريق كامل من كبار مهندسي السوفتوير لحل مشاكلك البرمجية خطوة بخطوة عبر التلغرام وتذاكر الدعم.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- لوحة التحكم الذكية المحدثة كلياً -->
+            <div class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border border-slate-800/80 rounded-2xl shadow-2xl relative overflow-hidden group">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <!-- الشريط العلوي للوحة التحكم -->
+                <div class="bg-slate-900/90 border-b border-slate-800/60 px-5 py-4 flex justify-between items-center">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="flex space-x-1.5 space-x-reverse">
+                            <span class="w-3 h-3 bg-red-500 rounded-full inline-block"></span>
+                            <span class="w-3 h-3 bg-yellow-500 rounded-full inline-block"></span>
+                            <span class="w-3 h-3 bg-green-500 rounded-full inline-block"></span>
+                        </div>
+                        <span class="text-xs font-bold text-gray-400 font-mono mr-2"><i class="fas fa-server text-blue-400 ml-1.5"></i>Yaso-Core v2.4.0-Live</span>
+                    </div>
+                    <div class="flex items-center space-x-2 space-x-reverse">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span class="text-[11px] font-bold text-emerald-400 uppercase tracking-wider font-mono">متصل</span>
+                    </div>
+                </div>
+
+                <!-- شاشة الإحصائيات السريعة داخل اللوحة -->
+                <div class="grid grid-cols-3 gap-px bg-slate-800/40 border-b border-slate-800/60 text-center font-mono">
+                    <div class="p-3 bg-slate-950/40">
+                        <p class="text-[10px] text-gray-500 font-sans font-bold">العمليات الناجحة</p>
+                        <p id="counter-orders" class="text-sm font-bold text-blue-400 mt-0.5">14,250</p>
+                    </div>
+                    <div class="p-3 bg-slate-950/40 border-x border-slate-800/40">
+                        <p class="text-[10px] text-gray-500 font-sans font-bold">سرعة الاستجابة</p>
+                        <p id="counter-speed" class="text-sm font-bold text-cyan-400 mt-0.5">1.2s</p>
+                    </div>
+                    <div class="p-3 bg-slate-950/40">
+                        <p class="text-[10px] text-gray-500 font-sans font-bold">السيرفرات النشطة</p>
+                        <p class="text-sm font-bold text-emerald-400 mt-0.5">32/32</p>
+                    </div>
+                </div>
+
+                <!-- مساحة شاشة الأوامر التفاعلية (Terminal Log) -->
+                <div class="p-5 bg-slate-950/80 font-mono text-xs space-y-2 h-64 overflow-y-auto custom-scrollbar text-left dir-ltr" id="terminal-screen">
+                    <!-- الأوامر البرمجية ستحقن هنا تلقائياً بواسطة الجافا سكريبت بالأسفل -->
+                </div>
+
+                <!-- شريط الحالة السفلي للوحة التحكم -->
+                <div class="bg-slate-950 px-5 py-2.5 border-t border-slate-900 flex justify-between items-center text-[11px] text-gray-500 font-mono">
+                    <span>API Gateway: HTTPS Secured</span>
+                    <span id="live-timestamp">00:00:00 AM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر السفلي -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-12 text-center text-sm text-gray-500">
+        <div class="container mx-auto px-6">
+            <p class="text-base text-gray-400 font-bold mb-3">Yaso Tech &copy; 2026</p>
+            <p class="max-w-md mx-auto leading-relaxed">جميع الحقوق محفوظة. السيرفر مخصص لفنيي السوفتوير ومحلات الصيانة المعتمدة والمحترفين فقط.</p>
+        </div>
+    </footer>
+
+    <!-- المودال الخاص بتسجيل الدخول -->
+    <div id="login-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-all duration-300 backdrop-blur-sm">
+        <div class="glass-modal w-full max-w-md p-8 rounded-3xl border border-slate-800 shadow-2xl transform scale-95 transition-all duration-300 text-right relative">
+            <button onclick="toggleModal('login-modal')" class="absolute top-5 left-5 text-gray-400 hover:text-white transition">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+            <div class="text-center mb-8">
+                <div class="inline-flex bg-blue-600/10 text-blue-400 p-3 rounded-2xl border border-blue-500/20 mb-4">
+                    <i class="fas fa-user-shield text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-black text-white">تسجيل الدخول للمنصة</h3>
+                <p class="text-gray-400 text-xs mt-1">مرحباً بك مجدداً في سيرفر Yaso Tech الفاخر</p>
+            </div>
+            <form class="space-y-5" onsubmit="event.preventDefault();">
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 mb-2 mr-1">اسم المستخدم أو البريد الإلكتروني</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-500">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <input type="email" placeholder="example@domain.com" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 pr-11 pl-4 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition font-sans text-left dir-ltr">
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-2 px-1">
+                        <label class="block text-xs font-bold text-gray-400">كلمة المرور</label>
+                        <a href="#" class="text-[11px] text-blue-400 hover:underline">نسيت كلمة المرور؟</a>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-500">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <input type="password" placeholder="••••••••" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl py-3 pr-11 pl-4 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition font-sans text-left dir-ltr">
+                    </div>
+                </div>
+                <div class="flex items-center mt-2 mr-1">
+                    <input id="remember_me" type="checkbox" class="w-4 h-4 rounded bg-slate-950 border-slate-800 text-blue-600 focus:ring-blue-500/20 focus:ring-2 accent-blue-600">
+                    <label for="remember_me" class="mr-2 text-xs text-gray-400 cursor-pointer select-none">تذكر بقائي متصلاً</label>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:opacity-90 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-blue-600/20 transition mt-2">دخول آمن للمنصة</button>
+            </form>
+            <div class="text-center mt-6 pt-5 border-t border-slate-800/60 text-xs text-gray-400">
+                ليس لديك حساب صيانة بعد؟ 
+                <button onclick="toggleModal('login-modal'); toggleModal('register-modal');" class="text-blue-400 font-bold hover:underline mr-1">أنشئ حسابك الآن</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- المودال الخاص بإنشاء الحساب -->
+    <div id="register-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-all duration-300 backdrop-blur-sm">
+        <div class="glass-modal w-full max-w-md p-8 rounded-3xl border border-slate-800 shadow-2xl transform scale-95 transition-all duration-300 text-right relative">
+            <button onclick="toggleModal('register-modal')" class="absolute top-5 left-5 text-gray-400 hover:text-white transition">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="inline-flex bg-cyan-600/10 text-cyan-400 p-3 rounded-2xl border border-cyan-500/20 mb-4">
+                    <i class="fas fa-user-plus text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-black text-white">إنشاء حساب وكيل / فني</h3>
+                <p class="text-gray-400 text-xs mt-1">انضم لأكبر سيرفر سوفتوير للهواتف الذكية</p>
+            </div>
+            <form class="space-y-4" onsubmit="event.preventDefault();">
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 mb-1.5 mr-1">الاسم الكامل (أو اسم المحل)</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-500">
+                            <i class="fas fa-store"></i>
+                        </span>
+                        <input type="text" placeholder="مهندس أحمد سوفت" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2.5 pr-11 pl-4 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 mb-1.5 mr-1">البريد الإلكتروني</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-500">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <input type="email" placeholder="name@store.com" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2.5 pr-11 pl-4 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition font-sans text-left dir-ltr">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 mb-1.5 mr-1">رقم الهاتف أو التلغرام (للتفعيل السريع)</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-500">
+                            <i class="fab fa-telegram"></i>
+                        </span>
+                        <input type="text" placeholder="+966 500000000" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2.5 pr-11 pl-4 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition font-sans text-left dir-ltr">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 mb-1.5 mr-1">كلمة المرور القوية</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-500">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <input type="password" placeholder="••••••••" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl py-2.5 pr-11 pl-4 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition font-sans text-left dir-ltr">
+                    </div>
+                </div>
+                <div class="flex items-start mt-2 mr-1">
+                    <input id="terms" type="checkbox" required class="w-4 h-4 mt-0.5 rounded bg-slate-950 border-slate-800 text-cyan-600 focus:ring-cyan-500/20 focus:ring-2 accent-cyan-600">
+                    <label for="terms" class="mr-2 text-[11px] text-gray-400 cursor-pointer select-none leading-relaxed">أوافق على شروط الاستخدام وأن الحساب مخصص فقط لأعمال صيانة وبرمجة الهواتف المصرحة والمشروعة.</label>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 text-white font-bold py-3 rounded-xl shadow-lg shadow-cyan-600/20 transition mt-2">تسجيل وتفعيل الحساب</button>
+            </form>
+            <div class="text-center mt-5 pt-4 border-t border-slate-800/60 text-xs text-gray-400">
+                لديك حساب بالفعل؟ 
+                <button onclick="toggleModal('register-modal'); toggleModal('login-modal');" class="text-cyan-400 font-bold hover:underline mr-1">سجل دخولك</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- كود الجافا سكريبت الذكي الخاص بالمودال ومحاكي لوحة التحكم الحية -->
+    <script>
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const modalBox = modal.querySelector('.glass-modal');
+            
+            if (modal.classList.contains('opacity-0')) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    modalBox.classList.remove('scale-95');
+                    modalBox.classList.add('scale-100');
+                }, 10);
+            } else {
+                modalBox.classList.remove('scale-100');
+                modalBox.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('opacity-0', 'pointer-events-none');
+                }, 20);
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target.id === 'login-modal') toggleModal('login-modal');
+            if (event.target.id === 'register-modal') toggleModal('register-modal');
+        }
+
+        // --- نظام محاكاة لوحة التحكم البرمجية الذكية (Terminal Simulator) ---
+        const terminalLogs = [
+            { type: 'info', text: 'Connecting to Samsung FRP API Gateway...' },
+            { type: 'success', text: 'Connection Established. Auth token validated.' },
+            { type: 'warning', text: 'Checking device IMEI status on database...' },
+            { type: 'success', text: 'FRP Locked Resolved successfully. [Time: 1.4s]' },
+            { type: 'info', text: 'Listening to Apple iCloud Bypass requests...' },
+            { type: 'info', text: 'Incoming request from Agent ID: #4092...' },
+            { type: 'warning', text: 'Authorizing hardware server communication line...' },
+            { type: 'success', text: 'iCloud Bypass Token Injected. Device Unlocked!' },
+            { type: 'info', text: 'Syncing database with UnlockTool global activation API...' },
+            { type: 'success', text: 'License Extended for 1 Year for User: @Yaso_User_88' },
+            { type: 'info', text: 'Decrypting Network security block for Xiaomi Global build...' },
+            { type: 'success', text: 'Network Restrictions Cleared successfully.' }
+        ];
+
+        const terminalScreen = document.getElementById('terminal-screen');
+        let logIndex = 0;
+
+        function getTimestamp() {
+            const now = new Date();
+            return `[${now.toTimeString().split(' ')[0]}]`;
+        }
+
+        function appendLog() {
+            const log = terminalLogs[logIndex];
+            const p = document.createElement('p');
+            
+            let colorClass = 'text-blue-400';
+            if (log.type === 'success') colorClass = 'text-emerald-400 font-bold';
+            if (log.type === 'warning') colorClass = 'text-yellow-400';
+
+            p.className = colorClass;
+            p.innerHTML = `<span class="text-gray-600">${getTimestamp()}</span> ${log.text}`;
+            
+            terminalScreen.appendChild(p);
+            terminalScreen.scrollTop = terminalScreen.scrollHeight;
+
+            if (terminalScreen.children.length > 25) {
+                terminalScreen.removeChild(terminalScreen.firstChild);
+            }
+
+            logIndex = (logIndex + 1) % terminalLogs.length;
+            setTimeout(appendLog, Math.random() * 1500 + 1000);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            appendLog();
+            
+            setInterval(() => {
+                const timeLabel = document.getElementById('live-timestamp');
+                const now = new Date();
+                timeLabel.innerText = now.toLocaleTimeString();
+            }, 1000);
+
+            setInterval(() => {
+                const orders = document.getElementById('counter-orders');
+                let currentOrders = parseInt(orders.innerText.replace(',', ''));
+                orders.innerText = (currentOrders + Math.floor(Math.random() * 3)).toLocaleString();
+            }, 4000);
+        });
+    </script>
+</body>
+</html>

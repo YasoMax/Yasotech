@@ -1,0 +1,6 @@
+<form onsubmit="event.preventDefault();" id="register-form">
+    <input type="text" name="username" placeholder="اسم المستخدم" required>
+    <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+    <input type="password" name="password" placeholder="كلمة المرور" required>
+    <button type="submit" id="register-btn">تسجيل وتفعيل الحساب</button>
+</form>

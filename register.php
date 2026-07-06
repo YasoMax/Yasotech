@@ -5,11 +5,14 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+$stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+$stmt->bind_param("sss", $username, $email, $password);
 
-if ($conn->query($sql) === TRUE) {
+if ($stmt->execute()) {
     echo "success";
 } else {
     echo "error";
 }
+$stmt->close();
+$conn->close();
 ?>
